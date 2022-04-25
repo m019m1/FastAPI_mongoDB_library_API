@@ -10,7 +10,8 @@ API библиотеки на FastAPI с MongoDB.
 - FastAPI == 0.75.2
 - MongoDB == 5.0.7
 
-Для просмотра GET-запросов в боевом режиме рекомендуется пользоваться расширением для браузера "json-viewer"
+
+Для просмотра GET-запросов в боевом режиме рекомендуется пользоваться расширением для браузера типа "json-viewer" для Chrome
 https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh
 
 ## Инструкция
