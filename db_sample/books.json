@@ -1,0 +1,18 @@
+[
+    {"title": "Northanger Abbey", "authors": ["Austen, Jane"], "year": 1814, "edition": "Penguin"},
+    {"title": "War and Peace", "authors": ["Tolstoy, Leo"], "year": 1865, "edition": "Penguin"},
+    {"title": "Anna Karenina", "authors": ["Tolstoy, Leo"], "year": 1875, "edition": "Penguin"},
+    {"title": "Mrs. Dalloway", "authors": ["Woolf, Virginia"], "year": 1925, "edition": "Harcourt Brace"},
+    {"title": "A Room of One's Own", "authors": ["Woolf, Virginia"], "year": 1922, "edition": "Penguin"},
+    {"title": "The Hours", "authors": ["Cunnningham, Michael"], "year": 1999, "edition": "Harcourt Brace"},
+    {"title": "Huckleberry Finn", "authors": ["Twain, Mark"], "year": 1865, "edition": "Penguin"},
+    {"title": "Tom Sawyer", "authors": ["Twain, Mark"], "year": 1862, "edition": "Random House"},
+    {"title": "Bleak House", "authors": ["Dickens, Charles"], "year": 1870, "edition": "Random House"},
+    {"title": "Harry Potter", "authors": ["Rowling, J.K."], "year": 2000, "edition": "Harcourt Brace"},
+    {"title": "One Hundred Years of Solitude", "authors": ["Marquez"], "year": 1967, "edition": "Harper Perennial"},
+    {"title": "Hamlet, Prince of Denmark", "authors": ["Shakespeare"], "year": 1603, "edition": "Signet Classics"},
+    {"title": "Lord of the Rings", "authors": ["Tolkien, J.R."], "year": 1937, "edition": "Penguin"},
+    {"title": "The Twelve Chairs", "authors": ["Ilf, Ilya", "Petrov, Yevgeny"], "year": 1928, "edition": "Piter"},
+    {"title": "The Little Golden Calf", "authors": ["Ilf, Ilya", "Petrov, Yevgeny"], "year": 1931, "edition": "Piter"},
+    {"title": "One-storied America", "authors": ["Ilf, Ilya", "Petrov, Yevgeny"], "year": 1937, "edition": "Piter"}
+]
