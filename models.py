@@ -6,7 +6,7 @@ class CustomQuerySet(QuerySet):
     def to_json(self):
         return "[%s]" % (",".join([doc.to_json() for doc in self]))
 
-        
+
 class Authors(Document):
     full_name = StringField()
 
@@ -23,11 +23,10 @@ class Books(Document):
 
     meta = {'queryset_class': CustomQuerySet}
 
-    #override
+    # override
     def to_json(self):
         data = self.to_mongo()
         for i in range(len(data['authors'])):
-            data['authors'][i]= self.authors[i].to_mongo()
-        data['edition']= self.edition.to_mongo()
+            data['authors'][i] = self.authors[i].to_mongo()
+        data['edition'] = self.edition.to_mongo()
         return bson.json_util.dumps(data)
-

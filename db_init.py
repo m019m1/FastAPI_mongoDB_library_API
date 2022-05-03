@@ -1,6 +1,7 @@
-import asyncio, json
+import asyncio
+import json
 from mongoengine import connect
-from fastapi.encoders import jsonable_encoder  
+from fastapi.encoders import jsonable_encoder
 from models import Authors, Editions, Books
 from routes.authors import create_author
 from routes.editions import create_edition
@@ -19,13 +20,15 @@ with open('db_sample/editions.json') as f:
 with open('db_sample/books.json') as f:
     books = json.load(f)
 
+
 def create_book(book: Book):
-    authors = Authors.objects(full_name__in = book['authors'])
-    edition = Editions.objects(name = book['edition']).first()
+    authors = Authors.objects(full_name__in=book['authors'])
+    edition = Editions.objects(name=book['edition']).first()
     new_book = Books(**jsonable_encoder(book))
     new_book.authors = authors
     new_book.edition = edition
     new_book.save()
+
 
 if __name__ == "__main__":
     for author in authors:
@@ -38,4 +41,3 @@ if __name__ == "__main__":
         })
     for book in books:
         create_book(book)
-    

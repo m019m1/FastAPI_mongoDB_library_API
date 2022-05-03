@@ -1,11 +1,13 @@
-import json, urllib
+import json
+import urllib
 
-def paginate(data, params, prefix = ''):
+
+def paginate(data, params, prefix=''):
     start = (params['page_num'] - 1) * params['page_size']
     end = start + params['page_size']
 
     data = data[start:end]
-    
+
     response = {
         'total': data.count(),
         'at_page': min(data.count()-params['page_size']*(params['page_num']-1), params['page_size']),
