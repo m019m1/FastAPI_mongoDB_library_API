@@ -16,6 +16,30 @@ https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibn
 
 ## Инструкция
 
+**Используя докер**
+##### 1) Сделать форк репозитория и поставить звёздочку)
+
+##### 2) Клонировать репозиторий
+
+    git clone https://github.com/m019m1/test_case_FastAPI_mongoDB.git
+
+##### 3) Находясь в корневой папке, запустить сборку докера
+
+    docker-compose build
+
+##### 4) Единожды заполнить БД начальными данными
+
+    docker-compose run web python db_init.py
+
+##### 5) Запустить сборку
+
+    docker-compose up
+    
+##### 6) Перейти по адресу
+
+    http://127.0.0.1:8000/docs
+    
+**Без докера**
 ##### 1) Сделать форк репозитория и поставить звёздочку)
 
 ##### 2) Клонировать репозиторий

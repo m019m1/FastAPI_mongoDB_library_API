@@ -10,7 +10,7 @@ router = APIRouter()
 PREFIX_EDITIONS = '/editions'
 
 @router.post('', status_code=201)
-async def create_edition(edition: Edition):
+def create_edition(edition: Edition):
     try:
         new_edition = Editions(**jsonable_encoder(edition))
         new_edition.save()
@@ -22,7 +22,7 @@ async def create_edition(edition: Edition):
         }
 
 @router.get('')
-async def get_editions(name: str = Query('', description="Search by name"), 
+def get_editions(name: str = Query('', description="Search by name"), 
                        page_size: int = Query(5, description="Quantity of results per page"), 
                        page_num: int = Query(1, description="Page number")):
     params = locals()
@@ -34,7 +34,7 @@ async def get_editions(name: str = Query('', description="Search by name"),
 
 
 @router.get('/{pk}')
-async def get_single_edition(pk: str = Path(..., max_length=24)):
+def get_single_edition(pk: str = Path(..., max_length=24)):
     try:
         edition = Editions.objects.with_id(pk)
     except ValidationError as err:
@@ -48,7 +48,7 @@ async def get_single_edition(pk: str = Path(..., max_length=24)):
     return json.loads(edition.to_json())
 
 @router.patch('/{pk}')
-async def modify_edition(
+def modify_edition(
     pk: str = Path(..., max_length=24, description="Edition primary key"),
     name: str = Body('', embed=True, min_length=1, max_length=70, description="New edition name")):
     try:
@@ -72,7 +72,7 @@ async def modify_edition(
     }
 
 @router.delete('/{pk}')
-async def delete_edition(pk: str = Path(..., max_length=24, description="Edition primary key")):
+def delete_edition(pk: str = Path(..., max_length=24, description="Edition primary key")):
     try:
         edition = Editions.objects.with_id(pk)
     except ValidationError as err:

@@ -16,10 +16,4 @@ class Book(BaseModel):
         ge=1450, 
         le=datetime.now().year, 
         description="Book publishing year must be between 1450 and current")
-
-    # @validator('year')
-    # def check_year(cls, v):
-    #     if v > datetime.now().year:
-    #         raise ValueError("Book's publishing year should be less or equal than current")
-    #     return v
-
+        

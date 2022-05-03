@@ -12,7 +12,7 @@ router = APIRouter()
 PREFIX_BOOKS = '/books'
 
 @router.post('', status_code=201)
-async def create_book(book: Book = Body(..., description="Enter valid authors' and edition IDs")):
+def create_book(book: Book = Body(..., description="Enter valid authors' and edition IDs")):
     authors = []
     try:
         # authors = Authors.objects(id__in = book.authors) - uncaughtable ValidationError! O_o
@@ -42,7 +42,7 @@ async def create_book(book: Book = Body(..., description="Enter valid authors' a
         }
 
 @router.get('')
-async def get_books(
+def get_books(
     title: str = Query('', max_length=100, description="Search by title"),
     author: str = Query('', max_length=70, description="Search by author's full name"), 
     edition: str = Query('', max_length=70, description="Search by edition name"),
@@ -60,7 +60,7 @@ async def get_books(
     return paginate(books, params, PREFIX_BOOKS)
 
 @router.get('/{pk}')
-async def get_single_book(pk: str = Path(..., max_length=24)):
+def get_single_book(pk: str = Path(..., max_length=24)):
     try:
         book = Books.objects.with_id(pk)
     except ValidationError as err:
@@ -73,7 +73,7 @@ async def get_single_book(pk: str = Path(..., max_length=24)):
     return json.loads(book.to_json())
 
 @router.patch('/{pk}')
-async def modify_book(
+def modify_book(
     pk: str = Path(..., max_length=24, description="Book primary key"), 
     title: str = Body('', embed=True, max_length=200, description="New book title"),
     year: int = Body(None, embed=True, ge=1450, le=datetime.now().year, description="New book publishing year")):
@@ -102,7 +102,7 @@ async def modify_book(
     }
 
 @router.delete('/{pk}')
-async def delete_book(pk: str = Path(..., max_length=24, description="Book primary key")):
+def delete_book(pk: str = Path(..., max_length=24, description="Book primary key")):
     try:
         book = Books.objects.with_id(pk)
     except ValidationError as err:

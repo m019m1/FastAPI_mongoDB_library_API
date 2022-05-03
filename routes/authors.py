@@ -10,7 +10,7 @@ router = APIRouter()
 PREFIX_AUTHORS = '/authors'
 
 @router.post('', status_code=201)
-async def create_author(author: Author):
+def create_author(author: Author):
     try:
         new_author = Authors(**jsonable_encoder(author))
         new_author.save()
@@ -22,7 +22,7 @@ async def create_author(author: Author):
         }
 
 @router.get('')
-async def get_authors(full_name: str = Query('', description="Search by full name"), 
+def get_authors(full_name: str = Query('', description="Search by full name"), 
                       page_size: int = Query(5, description="Quantity of results per page"), 
                       page_num: int = Query(1, description="Page number")):
     params = locals()
@@ -33,7 +33,7 @@ async def get_authors(full_name: str = Query('', description="Search by full nam
     return paginate(authors, params, PREFIX_AUTHORS)
 
 @router.get('/{pk}')
-async def get_single_author(pk: str = Path(..., max_length=24)):
+def get_single_author(pk: str = Path(..., max_length=24)):
     try:
         author = Authors.objects.with_id(pk)
     except ValidationError as err:
@@ -47,7 +47,7 @@ async def get_single_author(pk: str = Path(..., max_length=24)):
     return json.loads(author.to_json())
 
 @router.patch('/{pk}')
-async def modify_author(
+def modify_author(
     pk: str = Path(..., max_length=24, description="Author's primary key"),
     full_name: str = Body('', embed=True, min_length=1, max_length=70, description="New author's full name")):
     try:
@@ -71,7 +71,7 @@ async def modify_author(
     }
 
 @router.delete('/{pk}')
-async def delete_author(pk: str = Path(..., max_length=24, description="Author's primary key")):
+def delete_author(pk: str = Path(..., max_length=24, description="Author's primary key")):
     try:
         author = Authors.objects.with_id(pk)
     except ValidationError as err:
