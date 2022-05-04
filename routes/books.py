@@ -66,7 +66,7 @@ def get_books(
 
 
 @router.get('/{pk}')
-def get_single_book(pk: str = Path(..., max_length=24)):
+def get_single_book(pk: str = Path(..., max_length=24, description="Book primary key")):
     try:
         book = Books.objects.with_id(pk)
     except ValidationError as err:

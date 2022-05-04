@@ -11,7 +11,7 @@ PREFIX_AUTHORS = '/authors'
 
 
 @router.post('', status_code=201)
-def create_author(author: Author):
+def create_author(author: Author = Body(..., description="Enter author's full name")):
     try:
         new_author = Authors(**jsonable_encoder(author))
         new_author.save()
@@ -37,7 +37,7 @@ def get_authors(full_name: str = Query('', description="Search by full name"),
 
 
 @router.get('/{pk}')
-def get_single_author(pk: str = Path(..., max_length=24)):
+def get_single_author(pk: str = Path(..., max_length=24, description="Author's primary key")):
     try:
         author = Authors.objects.with_id(pk)
     except ValidationError as err:
